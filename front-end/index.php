@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -14,9 +15,9 @@
         <div class="img-logo">
             <img src="../assetes/img/logo-img.png" height="50px" alt="">
         </div>
-        <h1>Chez vous</h1>
+        <a href="index.php"><h3>Chez vous</h3></a>
         <input type="search" placeholder="rercher votre maison">
-        <img src="../assetes/img/avatar.png" height="50px" alt="">
+        <a href="Register.php"><img src="../assetes/img/avatar.png" height="50px" alt=""></a>
 
     </nav>
 </body>

@@ -12,20 +12,24 @@
 
 nav{
     display: flex;
-    justify-content:space-between;
+    justify-content: center;
     align-items: center;
     background-color: aliceblue;
-    padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-top: 10px;
 }
 
 nav h1{
-    margin-left: -510px;
+    
 
 }
 nav input{
+    
+    margin-left: 500px;
+    margin-right: 500px;
     padding: 10px;
-    margin-left: 10px;
+    justify-content: center;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
 } 

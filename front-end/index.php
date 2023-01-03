@@ -14,11 +14,19 @@
         <div class="img-logo">
             <img src="../assetes/img/logo-img.png" height="50px" alt="">
         </div>
-        <h1>Chez vous</h1>
+        <a href="index.php">
+            <h1>Chez vous</h1>
+        </a>
         <input type="search" placeholder="rercher votre maison">
-        <img src="../assetes/img/avatar.png" height="50px" alt="">
-
+        <a href="Register.php">
+            <img src="../assetes/img/avatar.png" height="50px" alt=""></a>
     </nav>
+
+    <header>
+
+    </header>
+
+
 </body>
 
 </html>

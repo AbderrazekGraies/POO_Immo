@@ -12,12 +12,14 @@
 }
 
 nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: aliceblue;
-    padding-bottom: 10px;
-    padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(239, 239, 239);
+  padding-bottom: 10px;
+  padding-top: 10px;
+  box-shadow: -20px -13px 20px rgb(0, 0, 0);
+  border-bottom: 1px solid black;
 }
 
 nav, a:visited{
@@ -54,7 +56,7 @@ nav input{
     width: 235px;
     margin:35px auto;
     position: relative;
-    box-shadow: 0 0 20px 9px #ff61241f;
+    box-shadow: 3px 5px 20px 2px #0000001f;
     border-radius: 30px;
   }
   .toggle-btn{

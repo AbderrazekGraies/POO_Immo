@@ -16,9 +16,11 @@
 
 
 <?php
-session_start();
+
 
 include_once('config.php');
+
+//connection
 
 if(isset($_POST['login'])){
 
@@ -31,15 +33,37 @@ if(isset($_POST['login'])){
     if($row){
         $user=new user($row['firstName'],$row['lastName'],$row['email'],$row['telephone'],$row['password']);
         //echo 'welcome '.$user->firstName;
-
+        session_start();
         $_SESSION['user']=$user;
-        echo $_SESSION['user']->email;
 
         header('location:espace-user.php');
     }else{
         $user=NULL;
         echo 'try again';
     }
+
+}
+
+//incription
+
+if(isset($_POST['sign_up'])){
+
+    $firstName=$_POST['firstNameL'];
+    $lastName=$_POST['lastNameL'];
+    $email=$_POST['emailL'];
+    $telephone=$_POST['telephoneL'];
+    $password=$_POST['passwordL'];
+
+    $stmt = $conn->prepare('INSERT INTO user (firstName,lastName,email,telephone,password) VALUE (:firstName,:lastName,:email,:telephone,:password)');
+    $stmt->execute(['firstName' => $firstName,
+                    'lastName' => $lastName,
+                    'email' => $email,
+                    'telephone' => $telephone,
+                    'password' => $password,]);
+    $row = $stmt->fetch();
+
+
+    
 
 }
 

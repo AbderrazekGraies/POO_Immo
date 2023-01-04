@@ -23,7 +23,19 @@
     </nav>
 
     <header>
+        <div class="container">
+            <div class="img-product">
+                <img src="../assetes/img/first-img.webp" height="250px" alt="">
+            </div>
+            <div>
+                <p>Isere, Rhones alpes</p>
+                <p>Belle maison avec vue sur mer</p>
+                <p>Disponible</p>
+                <p>Prix: 100£</p>
 
+
+            </div>
+        </div>
     </header>
 
 

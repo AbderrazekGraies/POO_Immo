@@ -1,3 +1,7 @@
+<?php
+    include_once('user.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +16,31 @@
 
 
 <?php
+session_start();
 
-@include_once('config.php');
+include_once('config.php');
 
 if(isset($_POST['login'])){
+
+    $email=$_POST['email'];
+    $password=$_POST['password'];
     
+    $stmt = $conn->prepare('SELECT * FROM user WHERE email = :email and password=:password LIMIT 1');
+    $stmt->execute(['email' => $email,'password' => $password]);
+    $row = $stmt->fetch();
+    if($row){
+        $user=new user($row['firstName'],$row['lastName'],$row['email'],$row['telephone'],$row['password']);
+        //echo 'welcome '.$user->firstName;
+
+        $_SESSION['user']=$user;
+        echo $_SESSION['user']->email;
+
+        header('location:espace-user.php');
+    }else{
+        $user=NULL;
+        echo 'try again';
+    }
+
 }
 
 ?>
@@ -40,17 +64,17 @@ if(isset($_POST['login'])){
             <button type="button" class="toggle-btn" onclick="S_inscrire()">S'inscrire</button>
         </div>
         <form method="post" id="se_connecter" class="input-group">
-            <input type="text" class="intput-field" name="nom_utilisateur" placeholder="Nom d'Utilisateur" required>
-            <input type="password" class="intput-field" name="mot_dePasse" placeholder="Mot de passe" required><br><br>
+            <input type="text" class="intput-field" name="email" placeholder="email" required>
+            <input type="password" class="intput-field" name="password" placeholder="password" required><br><br>
             <button type="submit" name="login" class="submit-btn">Se connecter</button>
         </form>
         <form method="post" id="S_inscrire" class="input-group">
-            <input type="text" class="intput-field" id="prenomL" name="prenomL" placeholder="Prenom" required>
-            <input type="text" class="intput-field" id="nomL" name="nomL" placeholder="Nom" required>
-            <input type="email" class="intput-field" id="EmailL" name="EmailL" placeholder="E-mail" required>
+            <input type="text" class="intput-field" id="firstNameL" name="firstNameL" placeholder="firstName" required>
+            <input type="text" class="intput-field" id="lastNameL" name="lastNameL" placeholder="lastName" required>
+            <input type="email" class="intput-field" id="emailL" name="emailL" placeholder="E-mail" required>
             <input type="text" class="intput-field" id="telephoneL" name="telephoneL" placeholder="numero Telephone"
                 required>
-            <input type="password" class="intput-field" id="mot_dePasseL" name="mot_dePasseL" placeholder="Mot de passe"
+            <input type="password" class="intput-field" id="passwordL" name="passwordL" placeholder="Mot de passe"
                 required>
             <button type="submit" name="sign_up" class="submit-btn">S'inscrire</button>
         </form>

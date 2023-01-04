@@ -1,3 +1,11 @@
+<?php
+    include_once('user.php');
+    session_start();    
+    if(isset ($_SESSION['user'])){
+        $user=$_SESSION['user']; 
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,5 +30,5 @@
             <img src="../assetes/img/avatar.png" height="50px" alt=""></a>
     </nav>
 </body>
-
+    <h1><?php echo 'welcome ' . $user->firstName; ?></h1>
 </html>

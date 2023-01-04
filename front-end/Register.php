@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="register.css">
 </head>
 
+
+<?php
+
+@include_once('config.php');
+
+if(isset($_POST['login'])){
+    
+}
+
+?>
+
 <body>
     <nav>
         <div class="img-logo">

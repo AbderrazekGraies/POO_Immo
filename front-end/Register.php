@@ -27,20 +27,8 @@ if(isset($_POST['login'])){
     $email=$_POST['email'];
     $password=$_POST['password'];
     
-    $stmt = $conn->prepare('SELECT * FROM user WHERE email = :email and password=:password LIMIT 1');
-    $stmt->execute(['email' => $email,'password' => $password]);
-    $row = $stmt->fetch();
-    if($row){
-        $user=new user($row['firstName'],$row['lastName'],$row['email'],$row['telephone'],$row['password']);
-        //echo 'welcome '.$user->firstName;
-        session_start();
-        $_SESSION['user']=$user;
-
-        header('location:espace-user.php');
-    }else{
-        $user=NULL;
-        echo 'try again';
-    }
+    $user = new User($conn);
+    $user->login($email, $password);
 
 }
 
@@ -54,16 +42,10 @@ if(isset($_POST['sign_up'])){
     $telephone=$_POST['telephoneL'];
     $password=$_POST['passwordL'];
 
-    $stmt = $conn->prepare('INSERT INTO user (firstName,lastName,email,telephone,password) VALUE (:firstName,:lastName,:email,:telephone,:password)');
-    $stmt->execute(['firstName' => $firstName,
-                    'lastName' => $lastName,
-                    'email' => $email,
-                    'telephone' => $telephone,
-                    'password' => $password,]);
-    $row = $stmt->fetch();
 
+    $user=new User($conn);
+    $user->register($firstName,$lastName,$email,$telephone,$password);
 
-    
 
 }
 

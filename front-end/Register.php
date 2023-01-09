@@ -44,7 +44,6 @@ if(isset($_POST['sign_up'])){
 
 
     $user=new User($conn);
-    echo 'hey';
     $user->register($firstName,$lastName,$email,$telephone,$password);
 
 

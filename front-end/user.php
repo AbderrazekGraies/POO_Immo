@@ -20,9 +20,8 @@ class User{
         $stmt->bindValue(5, password_hash($pword,PASSWORD_DEFAULT), PDO::PARAM_STR);
         
         $stmt->execute();
-        echo 'hey2';
 
-        //header('location:Register.php');
+        header('location:Register.php');
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }

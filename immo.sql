@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 06, 2023 at 03:18 PM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Hôte : localhost:3306
+-- Généré le : lun. 09 jan. 2023 à 15:13
+-- Version du serveur : 8.0.30
+-- Version de PHP : 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,40 +18,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `immo`
+-- Base de données : `immo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `building`
+-- Structure de la table `estate`
 --
 
-CREATE TABLE `building` (
-  `building_ID` int NOT NULL,
-  `adress` varchar(20) NOT NULL,
-  `type` enum('house','appartement','garage','parking') NOT NULL,
-  `image` blob,
+CREATE TABLE `estate` (
+  `estate_ID` int NOT NULL,
+  `adress` varchar(30) NOT NULL,
+  `type` varchar(20) NOT NULL,
   `area` int NOT NULL,
   `price` int NOT NULL,
-  `Discription` text NOT NULL
+  `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favorite`
---
-
-CREATE TABLE `favorite` (
-  `user_ID` int NOT NULL,
-  `building_ID` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
 CREATE TABLE `user` (
@@ -64,63 +52,45 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`user_ID`, `firstName`, `lastName`, `email`, `telephone`, `password`) VALUES
-(6, 'tata', 'tata', 'tata@gmail.com', 3030, '$2y$10$hFGhoYp0DI.amc8S1Wypqu4horZePtLFywQF8XB7yOvA68.tSYgoe'),
-(8, 'toto', 'toto', 'toto@gmail.com', 1010, '$2y$10$1ACc5tcQfeHvFgzFEmkTEeiNs.HkcO9JXOPTUo0O51f2taUV3KqIS'),
-(9, 'tete', 'tete', 'tete@gmail.com', 4040, '$2y$10$dwnIYUkisXnswzrOLnpZyOuFMs9mcWqUOeTzx96BIDrz0tFUQNV7G');
+(3, 'toto', 'toto', 'toto@gmail.com', 1010, '$2y$10$edleX12bwwLfHFvvVbYGoOkfz4nSFznpLJFt48p3oDG3.6F9ArmWS'),
+(14, 'tata', 'tata', 'tata@gmail.com', 2002, '$2y$10$yTVCXDwFAROItq1GV8t3LO/iWMPCl2WfHOsMG/UXzNc9NkQ/WHte6');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `building`
+-- Index pour la table `estate`
 --
-ALTER TABLE `building`
-  ADD PRIMARY KEY (`building_ID`);
+ALTER TABLE `estate`
+  ADD PRIMARY KEY (`estate_ID`);
 
 --
--- Indexes for table `favorite`
---
-ALTER TABLE `favorite`
-  ADD UNIQUE KEY `user_ID` (`user_ID`,`building_ID`),
-  ADD KEY `building_ID` (`building_ID`);
-
---
--- Indexes for table `user`
+-- Index pour la table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_ID`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `building`
+-- AUTO_INCREMENT pour la table `estate`
 --
-ALTER TABLE `building`
-  MODIFY `building_ID` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `estate`
+  MODIFY `estate_ID` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `favorite`
---
-ALTER TABLE `favorite`
-  ADD CONSTRAINT `favorite_ibfk_1` FOREIGN KEY (`building_ID`) REFERENCES `building` (`building_ID`) ON DELETE CASCADE;
+  MODIFY `user_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

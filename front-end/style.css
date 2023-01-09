@@ -30,7 +30,20 @@ nav{
     top: 0; /* Position the navbar at the top of the page */
 
 }
+.logo-name{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 70px;
+    
+}
 
+.logo-name h1{
+    margin-right: 10px;
+   font-weight: bold;
+   letter-spacing: 1px;
+   font-size: 20px;
+}
 
 nav input{
     padding: 10px 55px;
@@ -51,8 +64,15 @@ nav input{
     align-items: center;
     margin-left: -90px;
     
-    margin-left: 500px;
-    margin-right: 500px;
+}
+
+.search-input img{
+    cursor: pointer;
+    color: black;
+    background-color: #fdfdfd1f;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
     padding: 10px;
     margin-left: 10px;
     box-shadow: 1px 6px 16px -12px black;
@@ -166,5 +186,87 @@ header{
     .right p{
         text-align: justify;
   text-justify: inter-word;
+    }
+}
+   
+
+@media (max-width: 550px) {
+   .article img{
+    height: 250px;
+    width: 250px;
+    margin: 0 auto;
+    padding-left: 10px;
+   }
+}
+
+
+@media (max-width: 550px){
+    .article{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 1140px){
+    .article{
+        display: flex;
+        justify-content: center;
+    }
+    .article p{
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+@media (max-width: 980px){
+    .article{
+        width: 100%;
+    }
+    .artcile .right{
+        width: 100%;
+    }
+}
+@media (max-width: 465px){
+
+    .logo-name img{
+        display: none;
+    }
+
+    .logo-name h1{
+        font-size: 20px;
+        margin-left: -10px;
+        padding-right: 12px;
+    }
+
+    .search-input input{
+        padding: 7px 7px;
+        margin-left:    10px;
+    
+    }
+
+    .search-input img{
+        display: flex;
+    }
+    .avatar-login img{
+        display: none;
+    }
+    .info-footer img{
+        display: contents ;
+    }
+
+    .artcile {
+        width: 100%;
+    }
+}
+
+@media (max-width: 460px){
+    .info-footer img{
+        display: block;
+    }
+
+    .article img{
+        height: 320px;
+        width: 320px;
     }
 }

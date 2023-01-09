@@ -1,5 +1,5 @@
 <?php
-    include_once('user.php');
+    include_once('User.php');
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +44,7 @@ if(isset($_POST['sign_up'])){
 
 
     $user=new User($conn);
+    echo 'hey';
     $user->register($firstName,$lastName,$email,$telephone,$password);
 
 
@@ -54,17 +55,18 @@ if(isset($_POST['sign_up'])){
 <body>
     <nav>
         <div class="logo-name">
-            <a href="index.php">
-                <h1>Chez <br> vous</h1>
-            </a>
+            <h1>Chez <br> Vous</h1>
             <img src="../assetes/img/logo-img.png" height="50px" alt="">
         </div>
-        <a href="index.php">
-            <h1>Chez vous</h1>
-        </a>
-        <input type="search" placeholder="rercher votre maison">
-        <a href="Register.php">
-            <img src="../assetes/img/avatar.png" height="50px" alt=""></a>
+        <div class="search-input">
+            <input type="search" placeholder="Recherchez votre bien!">
+            <img src="../assetes/img/search.png" height="30px" alt="">
+        </div>
+        <div class="avatar-login">
+            <a href="register.php">
+                <img src="../assetes/img/avatar-homme2.png" height="50px" alt="">
+            </a>
+        </div>
     </nav>
 
 

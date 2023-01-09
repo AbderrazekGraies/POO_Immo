@@ -35,5 +35,5 @@
             <img src="../assetes/img/avatar.png" height="50px" alt=""></a>
     </nav>
 </body>
-    <h1><?php echo 'welcome ' . $user['firstName']; ?></h1>
+
 </html>

@@ -23,7 +23,7 @@ class User{
 
         header('location:Register.php');
         } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
+            echo "Email deja utiliser ";
         }
     }
 

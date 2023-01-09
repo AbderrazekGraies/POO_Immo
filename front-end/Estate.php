@@ -10,9 +10,9 @@ class Estate{
         $this->conn = $conn;
     } 
 
-    function add($type,$area,$price){
+    function add($adress,$type,$area,$rooms,$isHeated,$Garage){
         try{
-            $stmt = $this->conn->prepare('INSERT INTO building() VALUE ()');
+            $stmt = $this->conn->prepare('INSERT INTO estate() VALUE ()');
         }catch(PDOException $e){
             
         }

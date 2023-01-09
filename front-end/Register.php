@@ -53,13 +53,18 @@ if(isset($_POST['sign_up'])){
 
 <body>
     <nav>
-        <div class="img-logo">
+        <div class="logo-name">
+            <a href="index.php">
+                <h1>Chez <br> vous</h1>
+            </a>
             <img src="../assetes/img/logo-img.png" height="50px" alt="">
         </div>
-        <a href="index.php"><h1>Chez vous</h1></a>
+        <a href="index.php">
+            <h1>Chez vous</h1>
+        </a>
         <input type="search" placeholder="rercher votre maison">
-        <img src="../assetes/img/avatar.png" height="50px" alt="">
-
+        <a href="Register.php">
+            <img src="../assetes/img/avatar.png" height="50px" alt=""></a>
     </nav>
 
 

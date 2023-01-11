@@ -47,6 +47,15 @@ class User{
         }
     }
 
+    function info($user_ID){
+        
+        $stmt = $this->conn->prepare('SELECT user_ID,firstName,lastName,email,telephone from user where user_ID=?');
+        $stmt->bindValue(1,$user_ID, PDO::PARAM_STR);
+        $stmt->execute();
+        $row =$stmt->fetch();
+        return $row;
+    }
+
 
 
     

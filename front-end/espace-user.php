@@ -1,13 +1,13 @@
 <?php
+    include_once('User.php');
     include_once('config.php');
     session_start();
 
     if(isset ($_SESSION['user_ID'])){
         $user_id=$_SESSION['user_ID'];
-        $stmt=$conn->prepare('SELECT * FROM user where user_ID=?');
-        $stmt->bindValue(1, $user_id, PDO::PARAM_STR);
-        $stmt->execute();
-        $user = $stmt->fetch();
+        $User=new User($conn);
+        
+        $user=$User->info($user_id);
     }
 ?>
 
@@ -35,5 +35,5 @@
             <img src="../assetes/img/avatar.png" height="50px" alt=""></a>
     </nav>
 </body>
-
+    <h1 style="position:relative;top:100px"><?php echo "welcome ". $user['firstName']; ?></h1>
 </html>

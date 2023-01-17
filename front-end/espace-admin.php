@@ -1,10 +1,14 @@
 <?php
     include_once('assets/header.php');
+    include_once('propriete.php')
 ?>
 
 <?php
 
   include_once('config.php');
+
+  $req=$conn->prepare('SELECT ville FROM region');
+  $req->execute();
   if(isset($_POST['upload'])){
 
     $adress=$_POST['adress'];
@@ -13,8 +17,13 @@
     $surface=$_POST['surface'];
     $typeDannonce=$_POST['typeDannonce'];
     $prix=$_POST['prix'];
-    $surface=$_POST['surface'];
-
+    $description=$_POST['description'];
+    $images=$_FILES['images'];
+    if(!empty($images['name'][0])){ 
+    
+      $propriete= new Propriete($conn);
+      $propriete->add($adress,$ville,$type,$surface,$prix,$typeDannonce,$description,$images);
+      }
   }
 
 ?>
@@ -29,6 +38,11 @@
   +ajouter une annonce
 </button>
 
+<?php 
+$propriete= new Propriete($conn);
+$propriete->afficheall(); 
+?>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -39,11 +53,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div method="post" class="modal-body">
-        <form enctype="multipart/form-data">
+      <div class="modal-body">
+        <form  method="POST" enctype="multipart/form-data">
           <div class="form-group">
-              <label for="typeannonce">annonce:</label>
-              <select class="form-control" id="typeannonce" name="typeannonce">
+              <label for="typeDannonce">annonce:</label>
+              <select class="form-control" id="typeDannonce" name="typeDannonce">
                   <option>vendre</option>
                   <option>a'louer</option>
               </select>
@@ -52,7 +66,14 @@
             <input class="form-control" id="adress" name="adress" placeholder="adress"></input>
           </div>
           <div class="form-group">
-            <input class="form-control" id="ville" name="ville" placeholder="ville"></input>
+          <label for="ville">ville:</label>
+              <select class="form-control" id="ville" name="ville">
+                <?php
+                while($ville=$req->fetch(PDO::FETCH_ASSOC)){
+                  echo '<option>'. $ville['ville'] .'</option>';
+                }
+                ?>  
+              </select>
           </div>
           <div class="form-group">
               <label for="type">type:</label>
@@ -71,13 +92,14 @@
             <label for="images">Select Images:</label>
             <input type="file" class="form-control-file" name="images[]" multiple>
           </div>
+          <div class="form-group">
+            <textarea class="form-control" id="description" name="description" placeholder="description"></textarea>
+          </div>
           </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" name="upload" class="btn btn-primary">Save changes</button>
-
+          <button type="submit" name="upload" class="btn btn-primary">Post annonce</button>
         </div>
-      </form>
     </div>
   </div>
 </div>

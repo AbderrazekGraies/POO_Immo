@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 09 jan. 2023 à 15:13
+-- Généré le : mar. 17 jan. 2023 à 14:58
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.1.10
 
@@ -24,16 +24,82 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `estate`
+-- Structure de la table `images`
 --
 
-CREATE TABLE `estate` (
-  `estate_ID` int NOT NULL,
+CREATE TABLE `images` (
+  `propriete_ID` int NOT NULL,
+  `image` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `images`
+--
+
+INSERT INTO `images` (`propriete_ID`, `image`) VALUES
+(9, 'maison-campgane.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `proprietes`
+--
+
+CREATE TABLE `proprietes` (
+  `propriete_ID` int NOT NULL,
   `adress` varchar(30) NOT NULL,
+  `ville` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `type` varchar(20) NOT NULL,
-  `area` int NOT NULL,
-  `price` int NOT NULL,
-  `Description` text NOT NULL
+  `surface` int NOT NULL,
+  `typeDannonce` varchar(10) NOT NULL,
+  `prix` int NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `proprietes`
+--
+
+INSERT INTO `proprietes` (`propriete_ID`, `adress`, `ville`, `type`, `surface`, `typeDannonce`, `prix`, `description`) VALUES
+(9, 'fezgfze', 'Grenoble', 'Maison', 1, 'vendre', 1, 'jytkytkytk');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `proprietetype`
+--
+
+CREATE TABLE `proprietetype` (
+  `type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `region`
+--
+
+CREATE TABLE `region` (
+  `region` varchar(20) NOT NULL,
+  `ville` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `region`
+--
+
+INSERT INTO `region` (`region`, `ville`) VALUES
+('Auvergne-Rhône-Alpes', 'Grenoble'),
+('Auvergne-Rhône-Alpes', 'Lyon');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `types`
+--
+
+CREATE TABLE `types` (
+  `type` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -64,10 +130,28 @@ INSERT INTO `user` (`user_ID`, `firstName`, `lastName`, `email`, `telephone`, `p
 --
 
 --
--- Index pour la table `estate`
+-- Index pour la table `images`
 --
-ALTER TABLE `estate`
-  ADD PRIMARY KEY (`estate_ID`);
+ALTER TABLE `images`
+  ADD UNIQUE KEY `propriete_ID` (`propriete_ID`,`image`);
+
+--
+-- Index pour la table `proprietes`
+--
+ALTER TABLE `proprietes`
+  ADD PRIMARY KEY (`propriete_ID`);
+
+--
+-- Index pour la table `proprietetype`
+--
+ALTER TABLE `proprietetype`
+  ADD UNIQUE KEY `type` (`type`);
+
+--
+-- Index pour la table `region`
+--
+ALTER TABLE `region`
+  ADD UNIQUE KEY `region` (`region`,`ville`);
 
 --
 -- Index pour la table `user`
@@ -81,16 +165,16 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT pour la table `estate`
+-- AUTO_INCREMENT pour la table `proprietes`
 --
-ALTER TABLE `estate`
-  MODIFY `estate_ID` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `proprietes`
+  MODIFY `propriete_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,43 +1,7 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-*{
-    
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
 
 
-}
-
-nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: aliceblue;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-nav, a:visited{
-  color:black
-}
-
-nav h1{
-    
-
-}
-nav input{
-    
-    margin-left: 500px;
-    margin-right: 500px;
-    padding: 10px;
-    justify-content: center;
-    color: black;
-    border: 1px solid black;
-    border-radius: 10px;
-} 
 
 .loginbar{
     width: 380px;
@@ -47,6 +11,7 @@ nav input{
     margin: 6% auto;
     background: #fff; 
     position: relative;
+    top: 2rem;
     overflow: hidden;
     border-radius: 20px;
   }
@@ -54,7 +19,7 @@ nav input{
     width: 235px;
     margin:35px auto;
     position: relative;
-    box-shadow: 0 0 20px 9px #ff61241f;
+    box-shadow: 3px 5px 20px 2px #0000001f;
     border-radius: 30px;
   }
   .toggle-btn{

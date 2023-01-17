@@ -1,24 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <nav>
-        <div class="img-logo">
-            <img src="../assetes/img/logo-img.png" height="50px" alt="">
+<?php
+    include_once('assets/header.php');
+?>
+    <Main>
+    <?php
+        include_once('config.php');
+        include_once('propriete.php');
+        $propriete= new Propriete($conn);
+        $propriete->afficheall(); 
+    ?>  
+    </Main>
+    <div class="footer">
+        <div class="info-footer">
+            <div class="avatar-login">
+                <img src="../assetes/img/avatar-homme2.png" height="28px" alt="">
+            </div>
+            <div>
+                <button>Trie</button>
+            </div>
         </div>
-        <h1>Chez vous</h1>
-        <input type="search" placeholder="rercher votre maison">
-        <img src="../assetes/img/avatar.png" height="50px" alt="">
-
-    </nav>
+    </div>
 </body>
-
-</html>
